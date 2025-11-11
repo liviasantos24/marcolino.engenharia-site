@@ -1,0 +1,228 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
+    background-color: #f8f9fa; /* Um cinza bem claro, mais suave */
+    color: #343a40; /* Texto um pouco mais escuro e moderno */
+    line-height: 1.6; /* Melhora a legibilidade do texto */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    display: flex; /* Usaremos flexbox para organizar o layout geral */
+    flex-direction: column; /* Conteúdo principal em coluna */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura total da viewport */
+}
+
+/* 🔳 Estilos do Cabeçalho - ATUALIZADO COM FOTO */
+header {
+    /* 1. ADICIONAR IMAGEM DE FUNDO E OVERLAY */
+    /* Cria um overlay preto semi-transparente sobre a imagem para garantir contraste */
+    background-image: 
+        url('C:/Users/PC/Downloads/WhatsApp Image 2025-02-05 at 20.49.41 (1).jpeg'); /* <-- Mude o caminho aqui! */
+    
+    /* 2. CONFIGURAÇÃO DA IMAGEM */
+    background-size: cover; /* Garante que a imagem cubra toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição */
+    
+    /* Mantenha suas propriedades originais: */
+    color: #fff; 
+    padding: 200px 20px; 
+    text-align: center;
+    border-bottom: 3px solid #dee2e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+/* O header h1 pode permanecer como está */
+header h1 {
+    margin: 0; 
+    font-size: 2.5em; 
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+}
+
+/* 🔳 Estilos da Seção Principal de Imóveis */
+.container {
+    max-width: 30px; /* Largura máxima controlada */
+    margin: 60px auto; /* Centraliza e adiciona espaço acima/abaixo */
+    padding: 0 20px; /* Espaçamento nas laterais */
+    width: 150%; /* Garante que o container ocupe a largura disponível dentro do max-width */
+}
+
+.imoveis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 30px; /* Aumenta o espaçamento entre os cards */
+    padding: 50px; /* Remove padding interno da grid, já que o container cuida disso */
+}
+
+/* 🔳 Estilos do Card de Imóvel */
+.imovel-card {
+    background-color: #fff; /* Fundo branco para o card */
+    border: 1px solid #ced4da; /* Borda cinza clara */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra mais suave e difusa */
+    display: flex;
+    flex-direction: column; /* Organiza conteúdo em coluna */
+    overflow: hidden; /* Garante que nada saia dos cantos arredondados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    cursor: pointer; /* Indica que é clicável */
+    text-decoration: none; /* Remove sublinhado se for link */
+    color: inherit; /* Herda a cor do texto do body */
+}
+
+.imovel-card:hover {
+    transform: translateY(-10px); /* Move o card para cima */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Sombra mais pronunciada no hover */
+}
+
+.imovel-foto {
+    width: 100%;
+    height: 250px; /* Altura padrão para fotos */
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    display: block; /* Evita espaço extra abaixo da imagem */
+}
+
+.imovel-info {
+    padding: 20px; /* Espaçamento interno para o texto */
+    text-align: left; /* Alinha texto à esquerda */
+    flex-grow: 1; /* Permite que essa área cresça para preencher o espaço */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui o conteúdo verticalmente */
+}
+
+.imovel-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: #007bff; /* Um azul para destacar o título */
+}
+
+.imovel-info p {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.imovel-info .preco {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #28a745; /* Verde para o preço */
+}
+
+/* 🔳 Estilos do Modal */
+.modal {
+    display: none; /* Começa escondido */
+    position: fixed;
+    z-index: 1050; /* Um z-index alto para garantir que fique sobre tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite rolagem se o conteúdo for maior */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(5px); /* Efeito de desfoque atrás do modal (opcional, bom suporte) */
+    -webkit-backdrop-filter: blur(5px); /* Para Safari */
+    padding-top: 60px; /* Espaço no topo */
+}
+
+.modal-conteudo {
+    background-color: #fff;
+    margin: 5% auto; /* Centraliza verticalmente e nas laterais */
+    padding: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px; /* Cantos arredondados */
+    width: 90%;
+    max-width: 700px; /* Largura máxima do modal */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra mais forte para o modal */
+    position: relative; /* Necessário para posicionar o botão de fechar */
+    animation: fadeIn 0.5s ease-out; /* Animação de entrada suave */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-conteudo h2 {
+    margin-top: 0;
+    color: #007bff;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.modal-conteudo p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+.modal-conteudo .preco-modal {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #28a745;
+    margin-bottom: 25px;
+}
+
+/* 🔳 Botão de Fechar do Modal */
+.fechar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    background: none; /* Remove fundo padrão */
+    border: none; /* Remove borda padrão */
+    padding: 0;
+}
+
+.fechar:hover,
+.fechar:focus {
+    color: #dc3545; /* Vermelho ao passar o mouse */
+    text-decoration: none;
+}
+
+/* 🔳 Estilo do Rodapé */
+footer {
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    text-align: center;
+    padding: 20px 0; /* Padding para dar altura */
+    margin-top: 180px; /* Espaço acima do rodapé */
+    border-top: 6px solid #fff; /* Borda superior */
+}
+
+footer p {
+    margin: 5px 0; /* Espaçamento entre parágrafos no rodapé */
+    font-size: 0.9em;
+}
+
+/* Adicione este bloco no final do seu CSS */
+@media (max-width: 992px) {
+    .imoveis-grid {
+        /* Muda para 2 colunas em tablets */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .imoveis-grid {
+        /* Muda para 1 coluna em celulares */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+
+    header {
+        padding: 60px 20px; /* Reduz o padding do cabeçalho em telas pequenas */
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .modal-conteudo {
+        margin: 10% auto; /* Centraliza melhor em dispositivos móveis */
+        padding: 20px;
+    }
+}

@@ -16,7 +16,7 @@ header {
     /* 1. ADICIONAR IMAGEM DE FUNDO E OVERLAY */
     /* Cria um overlay preto semi-transparente sobre a imagem para garantir contraste */
     background-image: 
-        url('C:/Users/PC/Downloads/WhatsApp Image 2025-02-05 at 20.49.41 (1).jpeg'); /* <-- Mude o caminho aqui! */
+        url('logo_marcolino_topo.jpeg'); /* <-- Mude o caminho aqui! */
     
     /* 2. CONFIGURAÇÃO DA IMAGEM */
     background-size: cover; /* Garante que a imagem cubra toda a área */
@@ -225,4 +225,5 @@ footer p {
         margin: 10% auto; /* Centraliza melhor em dispositivos móveis */
         padding: 20px;
     }
+
 }
